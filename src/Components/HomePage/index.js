@@ -56,7 +56,6 @@ const HomeWrapper = styled.div`
         top: 0;
         left: 0;
         position: absolute;
-
         z-index:0;
     }
 
@@ -88,7 +87,7 @@ const HomeWrapper = styled.div`
             width: 421px;
             height: 162px;
             left: calc(45% - 421px/2 + 0.5px);
-            top: 300px;
+            top: 280px;
         }
 
         .icons {

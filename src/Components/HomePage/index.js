@@ -4,6 +4,9 @@ import sample from './src/2.webm'
 import logo from "./src/toshiba.png"
 import { FaFacebookF, FaTelegramPlane, FaYoutube, FaInstagramSquare } from 'react-icons/fa'
 import { GiPowerButton, GiPauseButton, GiPlayButton } from "react-icons/gi"
+import Fade from 'react-reveal/Fade';
+import Reveal from 'react-reveal/Reveal';
+import Pulse from 'react-reveal/Pulse';
 
 
 const HomePage = () => {
@@ -13,10 +16,13 @@ const HomePage = () => {
             {/* content */}
             <div className='content'>
                 <div className="top-text">
-                    <div className="first">Добро пожаловать</div>
-                    <div className="second">Меню</div>
+                    <Fade top>
+                        <div className="first">Добро пожаловать</div>
+                        <div className="second">Меню</div>
+                    </Fade>
+
                 </div>
-                <div className="logo"><img src={logo} alt="Artel" /></div>
+                <Pulse><div className="logo"><img src={logo} alt="Artel" /></div></Pulse>
                 <div className="icons">
                     <div className="left-icons">
                         <div>{<FaFacebookF size={35} />}</div>

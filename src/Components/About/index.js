@@ -1,31 +1,55 @@
 import React from "react"
 import styled from "styled-components"
 import AboutPic from "./source/aboutUs.svg"
-import dots from "./source/dots.png";
+import Dots from "./source/dots.png";
 import newLogo from "./source/new-logo.png"
 
 const About = () => {
+
+    const blocks = [
+        {
+            id: 1,
+            text: "История",
+            text1: "Нужно прописать подробную историю компании, ее прирост по годам. Все полученные награды. Нет ограничений по символам.",
+            text2: "Читать дальше..."
+        },
+        {
+            id: 2,
+            text: "Экспорт",
+            text1: "Продукция Artel экспортируется во множество стран, среди которых Украина, Казахстан, Кыргызстан, Афганистан, Азербайджан, Таджикистан, Армения, Грузия, Туркменистан и Российская Федерация...",
+            text2: "Читать дальше..."
+        },
+        {
+            id: 3,
+            text: "Стратегия",
+            text1: "Нужно прописать подробную информацию про стратегию компании. Должны быть тематические фотографии к каждому пункту, или описание будущей иллюстрации для его создания.",
+            text2: "Читать дальше..."
+        },
+    ]
+
     return (
         <AboutWrapper>
             <div className="content">
                 <div className="about">
-                    <img src={AboutPic} alt="" />
+                    <img src={AboutPic} alt />
                 </div>
                 <div className="mainContent">
-                    <div id="a">
-                        <div className="first">
-                            <img src={dots} alt="" className="dots" />
-                            <img src={newLogo} alt="" className="newLogo" />
+                    <div id="a"> <img src={newLogo} alt /> </div>
+
+                    {blocks.map(i =>
+                        <div id="block">
+                            <p className="number">{i.id}</p>
+                            <div className="text">
+                                <h1>{i.text}</h1>
+                                <p>{i.text1}</p>
+                            </div>
+                            <div className="subtext">
+                                <p>{i.text2}</p>
+                            </div>
                         </div>
-
-
-                    </div>
-                    <div id="b"><p className="number">1</p></div>
-                    <div id="c"><p className="number">2</p></div>
-                    <div id="d"><p className="number">3</p></div>
+                    )}
                 </div>
             </div>
-
         </AboutWrapper>
     )
 }
@@ -36,6 +60,7 @@ const AboutWrapper = styled.div`
     width: 100%;
     height: auto;
     background-color: #000;
+    padding-bottom: 80px;
 
     .content{
         padding: 80px;
@@ -48,17 +73,8 @@ const AboutWrapper = styled.div`
         .mainContent{
             height: 100vh;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-            grid-template-areas: "a a a b b b"
-            "a a a b b b"
-            "a a a b b b"
-            "a a a b b b"
-            "a a a b b b"
-            "c c c d d d"
-            "c c c d d d"
-            "c c c d d d"
-            "c c c d d d";
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
             grid-gap: 40px;
             color: white;
 
@@ -71,40 +87,49 @@ const AboutWrapper = styled.div`
                 text-align: right;
             }
 
-            #a {
-                grid-area: a;
+            #a { 
                 overflow: hidden;
+                background-image: url(${Dots});
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                display: flex;
+                justify-content: center;
+                align-items: center; 
                 
-                .first{
-                    position: relative;
+                img {
+                  width: 35%;
+                }
+            }
+            
+            #block{
+                padding: 60px;
+                display: flex;
+                flex-direction: column;
+                -webkit-box-pack: justify;
+                justify-content: space-between;
+                
+                .text{
+                    margin: 0;
+                    padding: 0;
                 }
 
-                .dots{
-                    position: absolute;
+                h1{
+                    font-size: 48px;
+                    padding: 0;
+                    margin: 0;
                 }
-                .newLogo{
-                    height: 53vh;
-                    padding: 60px 220px;
-                    position: absolute;
-                    box-sizing: border-box;
-                    display: flex;
-                    -webkit-box-align: center;
-                    align-items: center;
-                    -webkit-box-pack: center;
-                    justify-content: center;
+
+                p{
+                    font-size: 24px;
+                    margin: 10px 0;
+                    padding: 0;
+                    color: #FFFFF;
                 }
-            }
-            #b{
-                grid-area: b;
-                padding: 60px;
-            }
-            #c{
-                grid-area: c;
-                padding: 60px;
-            }
-            #d{
-                grid-area: d;
-                padding: 60px;
+
+                .subtext {
+                    text-align: right;
+                }
             }
 
             & > div{
@@ -114,7 +139,4 @@ const AboutWrapper = styled.div`
             }
         }
     }
-
-
-
 `
